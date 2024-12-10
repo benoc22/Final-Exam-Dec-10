@@ -5,10 +5,6 @@ import seaborn as sns
 
 df = pd.read_csv("https://raw.githubusercontent.com/iantonios/dsc205/refs/heads/main/bike_sharing.csv")#importing file
 
-df = preprocess_data(df) #update df automatically
-df['datetime'] = pd.to_datetime(df['datetime'])
-
-
 #Rideship over time (1)
 st.write("Total Ridership Over Time")
 plt.figure(figsize=(12,8))
