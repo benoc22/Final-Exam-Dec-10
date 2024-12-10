@@ -4,6 +4,10 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 df = pd.read_csv("https://raw.githubusercontent.com/iantonios/dsc205/refs/heads/main/bike_sharing.csv")#importing file
+df['datetime'] = pd.to_datetime(df['datetime']) 
+#no NaN
+df['cnt'] = pd.to_numeric(df['cnt'], errors='coerce')
+df['cnt'].fillna(df['cnt'].mean(), inplace=True)
 
 #Rideship over time (1)
 st.write("Total Ridership Over Time")
