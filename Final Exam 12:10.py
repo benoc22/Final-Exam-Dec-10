@@ -6,7 +6,7 @@ import seaborn as sns
 df = pd.read_csv("https://raw.githubusercontent.com/iantonios/dsc205/refs/heads/main/bike_sharing.csv")#importing file
 
 df = preprocess_data(df) #update df automatically
-
+df['datetime'] = pd.to_datetime(df['datetime'])
 
 
 #Rideship over time (1)
@@ -16,6 +16,8 @@ plt.plot(df['datetime'], df['cnt'], label='Total Ridership', color='blue')
 plt.xlabel('Date')
 plt.ylabel('Total Ridership')
 plt.title('Total Ridership Over Time')
+plt.xticks(rotation=45)
+plt.tight_layout()
 st.pyplot()
 
 #Plot total rideship by season (2)
@@ -46,5 +48,7 @@ plt.xlabel('Date')
 plt.ylabel('Total Ridership')
 plt.title(f'Total Ridership with {rolling_window}-Day Rolling Average')
 plt.legend()
+plt.xticks(rotation=45)
+plt.tight_layout()
 st.pyplot()
 
